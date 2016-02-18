@@ -1,6 +1,6 @@
 Esse arquivo README esta associado ao branch do usuário:
 
-Nome do usuário desse branch: Master
+Nome do usuário desse branch: Christian
 
 Todos os alunos devem criar um branch com o seu nome e mantar esse branch atualizado com os fontes de seus projetos.
 Um branch pode ser criado com o comando:
@@ -12,10 +12,10 @@ Uma vez criado o aluno pode entrar no seu branch utilizando o comando
     git checkout <nome do branch>
 
 Após editar uma série de arquivos, para verificar quais estão diferentes da versão do repositório
-	
+
     git status
 
-Para verificar a diferença entre o arquivo local e a versão do repositório 
+Para verificar a diferença entre o arquivo local e a versão do repositório
 
     git diff <nome do arquivo>
 
@@ -38,5 +38,4 @@ Para subir o branch criado para o repositório principal usem o comando:
 Para buscar atualizações de outros branchs, usem os comandos
 
     # caso o branch seja o master coloquem "origin/master"
-    git merge <nome do branch>  
-
+    git merge <nome do branch>
