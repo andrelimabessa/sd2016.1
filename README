@@ -7,7 +7,14 @@ Uma vez criado o aluno pode entrar no seu branch utilizando o comando
 
     git checkout <nome do branch>
 
-Após editar uma série de arquivos, para verificar quais estão 
+Após editar uma série de arquivos, para verificar quais estão diferentes da versão do repositório
+	
+    git status
+
+Para verificar a diferença entre o arquivo local e a versão do repositório 
+
+    git diff <nome do arquivo>
+
 Para comitar algum arquivo no seu repositório local o aluno deve primeiro adicionar esse arquivo na lista de índice por meio do comando
 
     git add <nome do arquivo>
