@@ -1,3 +1,7 @@
+Esse arquivo README esta associado ao branch do usuário:
+
+Nome do usuário desse branch: Master
+
 Todos os alunos devem criar um branch com o seu nome e mantar esse branch atualizado com os fontes de seus projetos.
 Um branch pode ser criado com o comando:
 
@@ -26,4 +30,9 @@ Para efetuar o comit o camando a ser utilizado será
 Após o commit ser efetuado será necessário enviar os arquivos par o respositório principal no GitHub via o comando:
 
     git push
+
+Para buscar atualizações de outros branchs, usem os comandos
+
+    # caso o branch seja o master coloquem "origin/master"
+    git merge <nome do branch>  
 
