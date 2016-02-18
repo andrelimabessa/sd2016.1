@@ -31,6 +31,10 @@ Após o commit ser efetuado será necessário enviar os arquivos par o resposit�
 
     git push
 
+Para subir o branch criado para o repositório principal usem o comando:
+
+    git push --set-upstream origin <nome do branch>
+
 Para buscar atualizações de outros branchs, usem os comandos
 
     # caso o branch seja o master coloquem "origin/master"
