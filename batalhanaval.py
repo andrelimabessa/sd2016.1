@@ -1,5 +1,5 @@
 class Batalha_Naval(object):
-    def __init__(self,tam_tabuleiro):
+    def __init__(self, tam_tabuleiro):
         self.tabuleiro = [[0 for j in range(tam_tabuleiro)] for i in range(tam_tabuleiro)]
 
     def mostraTabuleiro(self):
