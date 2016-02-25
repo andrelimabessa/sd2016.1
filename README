@@ -2,6 +2,10 @@ Esse arquivo README esta associado ao branch do usuário:
 
 Nome do usuário desse branch: Christian
 
+############################################################
+#             Comandos básicos GIT
+############################################################
+
 Todos os alunos devem criar um branch com o seu nome e mantar esse branch atualizado com os fontes de seus projetos.
 Um branch pode ser criado com o comando:
 
@@ -39,3 +43,18 @@ Para buscar atualizações de outros branchs, usem os comandos
 
     # caso o branch seja o master coloquem "origin/master"
     git merge <nome do branch>
+
+############################################################
+#             Configurações do ambiente Python
+############################################################
+Adicione no arquivo /etc/profile o endereço do diretório onde o Python esta instalado e o diretório de Scripts
+
+export PATH=$PATH:/c/Python34
+export PATH=$PATH:/c/Python34/Scripts
+
+Pelo terminal do windows ou pelo git bash instale os seguintes pacotes pelo comando pip
+
+pip install jsonrpclib-pelix
+pip install rpyc
+pip install python3-memcached
+pip install pyzmq
