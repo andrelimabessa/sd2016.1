@@ -11,6 +11,7 @@ def client():
     #Enviod de dados
     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     dest = (HOST, PORT)
+    print("1 - iniciar novo jogo, 2 - montar tabuleiro, 3-realizar jogada\n")
     text = input("Digite algum comando:\n")
     data = text.encode(ENCODE)
     sock.sendto(data, dest)
