@@ -1,5 +1,4 @@
-class Main:
-    def __init__():
+from Entities.FieldManager import FieldManager
 
-
-print("teste");
+fieldManager = FieldManager(5)
+print(fieldManager.getField()[1][1])
