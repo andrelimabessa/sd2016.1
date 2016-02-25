@@ -57,3 +57,4 @@ Pelo terminal do windows ou pelo git bash instale os seguintes pacotes pelo coma
 pip install jsonrpclib-pelix
 pip install rpyc
 pip install python3-memcached
+pip install pyzmq
