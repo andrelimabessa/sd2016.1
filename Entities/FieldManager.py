@@ -6,19 +6,30 @@ class FieldManager:
 		self.__creatField()
 
 	def __creatField(self):
-		self.__field = [[0 for x in range(self.__size-1)] for x in range(self.__size-1)] 
+		self.__field = [['000000' for x in range(self.__size)] for x in range(self.__size)] 
 		
 	def getField(self):
 		return self.__field
 	
 	def markCoords(self, x, y, newShip):
 		fld = self.__field
-		rtn = false;
+		rtn = False;
+		x = x-1
+		y = y-1
 		if (newShip):
 			fld[x][y] = '#SHIP#'
 		elif(fld[x][y] == '#SHIP#'):
-			rtn = true
-			fld[x][y] = '#HIT#'
+			rtn = True
+			fld[x][y] = '#HIT!#'
 		else:
 			fld[x][y] = '#MISS#'
-		
+		return rtn
+	def printFieldAsText(self):
+		text = ''
+		fld = self.__field
+		for i in range(len(fld)):
+			text += "Line " + str(i+1)+': '
+			for j in range(len(fld)):
+				text += fld[i][j]+' , '
+			print(text)
+			text = ''
