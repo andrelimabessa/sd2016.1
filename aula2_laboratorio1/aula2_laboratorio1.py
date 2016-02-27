@@ -49,3 +49,68 @@ print(lista[1])
 a = list(range(5))
 
 print(a)
+
+a.insert(0, 42)
+
+print(a)
+
+a.reverse()
+
+print(a)
+
+a.sort()
+
+print(a)
+
+a = {"pera":5, "laranja":1}
+
+print(a["pera"])
+
+a["banana"] = 3
+
+print(a)
+
+print(a.items())
+
+nome = input("Digite alguma coisa: ")
+
+print("Você digitou %s"%(nome))
+
+def func(x):
+	print(type(x))
+
+func("nome")
+
+x = 20
+
+while x>10:
+	print(x)
+	x = x -1
+
+for i in range(5):
+	print(i)
+
+for letra in "Miguel":
+	print("Miguel")
+
+pares = [i for i in range(100) if(i%2) == 0]
+print(pares)
+print(pares[::-1])
+
+impares = [i for i in range(100) if(i % 2) != 0]
+print(impares)
+print(impares[::-1])
+
+lista_zeros = [0 for i in range(10)]
+print(lista_zeros)
+
+matriz = [ [0 for j in range(3) for i in range(5)] ]
+print(matriz)
+
+def nome_sobrenome(nome, sobrenome):
+	print(nome + " " + sobrenome)
+
+nome = input("Digite um nome: ")
+sobrenome = input("Digite o sobrenome: ")
+
+nome_sobrenome(nome, sobrenome)
