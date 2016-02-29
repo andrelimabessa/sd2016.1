@@ -30,4 +30,4 @@ class User(object):
 #	u1.save()
 #	u2 = User("Camila", 22)
 #	u2.save()
-#	print(User.all())
+#	print(User.all())#
