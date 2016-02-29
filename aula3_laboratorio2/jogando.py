@@ -2,16 +2,31 @@
 
 from batalha_naval import BatalhaNaval
 import random
+#import json
+import ast
 
 t = BatalhaNaval()
+
 tentar = False
+
 salvar = False
+
 memory_card = {}
-arq = open("memory_card.txt", "a")
 
-t.cria_tabuleiro(5,5)
+def comecando_jogo():
+	arq = open("memory_card.txt", "r")
+	linha = arq.readline()
+	if len(linha) > 0:
+		memory_card = ast.literal_eval(linha)
+		t.tabuleiro = memory_card["tabuleiro"]
+		t.jogadas = memory_card["jogadas"]
+		t.acertos = memory_card["acertos"]
+		arq.close()
+	else:
+		t.cria_tabuleiro(5,5)
+		t.distribuir_navios()
 
-t.distribuir_navios()
+comecando_jogo()
 
 while t.jogadas > 0:
 
@@ -35,7 +50,8 @@ while t.jogadas > 0:
 			memory_card["acertos"] = t.acertos
 			memory_card["tabuleiro"] = t.tabuleiro
 			print(memory_card)
-			arq.write(repr(memory_card))
+			arq = open("memory_card.txt", "w")
+			arq.write(repr(memory_card)+"\n")
 			#arq.write("Quantidade de Jogadas Restantes: %d \n"%(t.jogadas))
 			#arq.write("Quantidade de Acertos: %d \n"%(t.acertos))
 			arq.close()
