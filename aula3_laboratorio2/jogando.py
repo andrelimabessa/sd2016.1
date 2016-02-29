@@ -64,8 +64,8 @@ while t.jogadas > 0:
 if t.jogadas <= 0:
 	print("Sinto Muito, suas jogadas Terminaram!!")
 
-arq = open("memory_card.txt", "r")
-print(arq.readline())
-for linha in arq:
-	print(linha)
-arq.close()
+#arq = open("memory_card.txt", "r")
+#print(arq.readline())
+#for linha in arq:
+#	print(linha)
+#arq.close()
