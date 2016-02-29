@@ -5,6 +5,8 @@ import random
 class BatalhaNaval(object):
 	
 	tabuleiro = None
+	jogadas = 5
+	acertos = 0
 
 	def cria_tabuleiro(self, linhas, colunas):
 		self.linhas = linhas
@@ -22,5 +24,20 @@ class BatalhaNaval(object):
 
 		if self.tabuleiro[self.linha][self.coluna] == 1:
 			print("Acertou miseráve!!")
+			self.acertos = self.acertos + 1
 		else:
 			print("Foi mal chapa!!!")
+
+		self.jogadas = self.jogadas -1
+
+	def atualiza_jogadas(self, jogadas):
+		if jogadas < self.jogadas:
+			self.jogadas = jogadas
+		else:
+			jogadas = 5
+
+	def atualiza_acertos(self, acertos):
+		if acertos > self.acertos:
+			self.acertos = acertos
+		else:
+			acertos = 0
