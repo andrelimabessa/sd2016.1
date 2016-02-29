@@ -41,25 +41,26 @@ while t.jogadas > 0:
 
 	if tentar == True:
 		t.jogada(random.randint(0,4),random.randint(0,4))
+		salvar = input("Deseja Salvar suas jogadas?\'Sim\' ou \'Não\': ")
 	else:
 		salvar = input("Deseja Salvar suas jogadas?\'Sim\' ou \'Não\': ")
 
-		if salvar == "Sim":
-			salvar = True
-			memory_card["jogadas"] = t.jogadas
-			memory_card["acertos"] = t.acertos
-			memory_card["tabuleiro"] = t.tabuleiro
-			print(memory_card)
-			arq = open("memory_card.txt", "w")
-			arq.write(repr(memory_card)+"\n")
-			#arq.write("Quantidade de Jogadas Restantes: %d \n"%(t.jogadas))
-			#arq.write("Quantidade de Acertos: %d \n"%(t.acertos))
-			arq.close()
-			break
-		else:
-			salvar = False
-			arq.close()
-			break
+	if salvar == "Sim":
+		salvar = True
+		memory_card["jogadas"] = t.jogadas
+		memory_card["acertos"] = t.acertos
+		memory_card["tabuleiro"] = t.tabuleiro
+		print(memory_card)
+		arq = open("memory_card.txt", "w")
+		arq.write(repr(memory_card)+"\n")
+		#arq.write("Quantidade de Jogadas Restantes: %d \n"%(t.jogadas))
+		#arq.write("Quantidade de Acertos: %d \n"%(t.acertos))
+		arq.close()
+		break
+	else:
+		salvar = False
+		arq.close()
+		break
 
 if t.jogadas <= 0:
 	print("Sinto Muito, suas jogadas Terminaram!!")
