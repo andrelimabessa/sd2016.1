@@ -1,9 +1,12 @@
+import random
+
 class FieldManager:
 	__field = []
 	__size = 0
 	def __init__(self, size):
 		self.__size = size
 		self.__creatField()
+		self.__createRandomMarkedCoords()
 
 	def __creatField(self):
 		self.__field = [['000000' for x in range(self.__size)] for x in range(self.__size)] 
@@ -33,3 +36,12 @@ class FieldManager:
 				text += fld[i][j]+' , '
 			print(text)
 			text = ''
+	def __createRandomMarkedCoords(self):
+		markedCoords = 0
+		while markedCoords <= self.__size*2:
+			x = random.randint(1, self.__size)
+			y = random.randint(1, self.__size)
+			if (self.__field[x-1][y-1] == '000000'):
+				self.markCoords(x,y,True)
+				markedCoords = markedCoords+1	
+		

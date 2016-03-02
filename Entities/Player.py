@@ -14,3 +14,6 @@ class Player:
 	def setField(self, field):
 		if self.__field is None:
 			self.__field = field
+	def play(self, x, y):
+		self.__field.markCoords(x,y,False)
+		self.__field.printFieldAsText()
