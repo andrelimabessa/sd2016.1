@@ -14,6 +14,14 @@ def client():
     print("1 - iniciar novo jogo, 2 - montar tabuleiro, 3-realizar jogada\n")
     text = input("Digite algum comando:\n")
     data = text.encode(ENCODE)
+    
+    if text=='1':
+          print("novo jogo")
+    if text=='2':
+          print("tabuleiro")
+    if text=='3':
+          print("realizar jogada")              
+    print(data)
     sock.sendto(data, dest)
     #Resposta de envio ao servidor
     print(sock.getsockname())
