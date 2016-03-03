@@ -6,13 +6,12 @@ class Bessalha_Naval(object):
     qt_Tiros = 1
 
     def __init__(self):
-    
         self.tabuleiro = [[0 for i in range(5)] for j in range(5)]
 
     def checkSave(self):
         arq = open("lista.txt", "r")
         linha = arq.readlines()
-        if int(linha[1]) < 6:
+        if int(linha[1]) <= 5:
             self.tabuleiro = ast.literal_eval(linha[0])
             self.qt_Tiros = int(linha[1])
         arq.close()
@@ -22,18 +21,16 @@ class Bessalha_Naval(object):
             print (i)
 
     def barquinhos(self):
-
             self.tabuleiro[0][4] = 1
             self.tabuleiro[4][1] = 1
 
     def tiro(self):
-
-        qt_Tiros = 1
+        #qt_Tiros = 1
         navioAbatido = 0
         deveContinuar = True
 
         while (deveContinuar):
-            print ("%d Tiro: " %(qt_Tiros))
+            print ("%d Tiro: " %(self.qt_Tiros))
             print ("Informe a Coordenada X: ")
             X = input()
             print ("Informe a Coordenada Y: ")
@@ -51,9 +48,9 @@ class Bessalha_Naval(object):
             elif (self.tabuleiro[int(X)][int(Y)] == '~' or 'x'):
                 print("Já jogou aí ¬¬'")
 
-            qt_Tiros += 1
+            self.qt_Tiros += 1
             
-            if(qt_Tiros <= 5):
+            if(self.qt_Tiros <= 5):
                 deveContinuar = True
             else:
                 deveContinuar = False
@@ -63,7 +60,7 @@ class Bessalha_Naval(object):
 
             arq = open("lista.txt", "w")
             arq.write(str (self.tabuleiro) + '\n')
-            arq.write(str (qt_Tiros))
+            arq.write(str (self.qt_Tiros))
             arq.close()
 
         if (navioAbatido == 2):
