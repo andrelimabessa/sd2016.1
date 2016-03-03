@@ -1,6 +1,6 @@
 # coding: utf-8
 import socket
-import threading
+import threading#threads a nível de usuário
 from datetime import datetime
 
 ENCODE = "UTF-8"

@@ -23,6 +23,7 @@ def comecando_jogo():
 		t.acertos = memory_card["acertos"]
 		arq.close()
 	else:
+		arq.close()
 		t.cria_tabuleiro(5,5)
 		t.distribuir_navios()
 
@@ -31,7 +32,7 @@ comecando_jogo()
 while t.jogadas > 0:
 
 	print("Você tem %d jogada(s). Deseja Jogar nesse momento? \'Sim\' ou \'Não\': "%(t.jogadas))
-	
+
 	tentar = input()
 
 	if tentar == "Sim":
