@@ -64,7 +64,11 @@ class Bessalha_Naval(object):
             arq.close()
 
         if (navioAbatido == 2):
-            #qt_Tiros = 6
+            self.qt_Tiros = 6
+            arq = open("lista.txt", "w")
+            arq.write(str (self.tabuleiro) + '\n')
+            arq.write(str (self.qt_Tiros))
+            arq.close()
             print("Ganhou Mizerávi !!!")
             
         else:
