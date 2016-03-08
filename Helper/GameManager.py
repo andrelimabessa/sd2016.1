@@ -9,6 +9,7 @@ class GameManager:
 	__turnPlayer = 1
 	def __init__(self):
 		self.__handleGame()
+
 	def __handleGame(self):
 		if self.__player1 is None or self.__player2 is None:
 			self.__getFirstPlayer()
@@ -17,9 +18,9 @@ class GameManager:
 		self.__handleGame()
 
 	def __showGameTitle(self):
-		print('|||||||||||||||||||||')
-		print('!!!!BATALHA NAVAL!!!!')
-		print('|||||||||||||||||||||')
+		print('|||||||||||||||||||||');
+		print('!!!!BATALHA NAVAL!!!!');
+		print('|||||||||||||||||||||');
 	def __getFirstPlayer(self):
 		self.__showGameTitle()
 		if (self.__player1 is None): 
@@ -45,4 +46,3 @@ class GameManager:
 		else:
 			self.__player2.play(int(x),int(y))
 			self.__turnPlayer = 1
-		
