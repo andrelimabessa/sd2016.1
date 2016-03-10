@@ -1,16 +1,27 @@
 from batlefield import Batle_Field
 
-tam = input("Digite o tamanho da matriz")
+class Hello(object):
 
-navios = input("Digite a quantidade de navios")
+    def jogo(self):
 
-b = Batle_Field(tam)
+        print("----------------------------")
+        print("Bem Vindo ao Batalha Naval")
+        print("----------------------------\n")
 
-b.preencher(tam,navios)
+        tam = input("Digite o tamanho da matriz")
 
-for i in range(int(tam)):
-    eixoX = input("Digite o posicao x")
-    eixoY = input("Digite o posicao y")
-    print(b.jogar(eixoX, eixoY))
+        navios = input("Digite a quantidade de navios")
+
+        b = Batle_Field(tam)
+
+        b.preencher(tam,navios)
+
+        for i in range(int(tam)):
+            eixoX = input("Digite o posicao x")
+            eixoY = input("Digite o posicao y")
+            if b.jogar(eixoX, eixoY):
+                print("acertou")
+            else:
+                print("errou")
 
 input()
