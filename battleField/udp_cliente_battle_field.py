@@ -2,7 +2,7 @@ import socket
 from datetime import datetime
 
 ENCODE = "UTF-8"
-HOST = '127.0.0.1'
+HOST = '10.54.42.50'#'127.0.0.1'
 PORT = 5000
 MAX_BYTES = 65535
 
