@@ -25,4 +25,4 @@ def starting_game():
 		print("Precisa escolher uma opção válida.\n\n")
 		starting_game()
 
-starting_game()
+#starting_game()

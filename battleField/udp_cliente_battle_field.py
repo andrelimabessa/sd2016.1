@@ -11,7 +11,6 @@ def client():
 	while True:
 		sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 		dest = (HOST, PORT)
-		#starting_game()
 		text = input("Digite algum comando:\n")
 		data = text.encode(ENCODE)
 		sock.sendto(data, dest)
