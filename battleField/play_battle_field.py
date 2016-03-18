@@ -14,19 +14,19 @@ class game(object):
 		#try:
 		if int(acao) == 1:
 			print("Você escolheu: Ver estado do jogo")
-			print(acao)
+			#print("classe game")
 			return acao
 		elif int(acao) == 2:
 			print("Você escolheu: Continuar jogo anterior.")
-			print(acao)
+			#print(acao)
 			return acao
 		elif int(acao) == 3:
 			print("Você escolheu: Começar novo jogo.")
-			print(acao)
+			#print(acao)
 			return acao
 		else:
 			print("Precisa escolher uma opção válida.\n\n")
-			#return starting_game()
+			return acao
 		#except :
 		#	print("Precisa escolher uma opção válida.\n\n")
 		#	starting_game()

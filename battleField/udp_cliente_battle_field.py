@@ -17,21 +17,27 @@ def client():
 		#while option:
 		acao = game.starting_game()
 		if acao == 1:
-			print(acao)
-			option = False#break
+			#print(acao)
+			#option = False#break
+			text = acao
 		elif acao ==2:
-			print(acao)
-			option = False#break
+			#print(acao)
+			#option = False#break
+			text = acao
 		elif acao ==3:
-			print(acao)
-			option = False#break
+			#print(acao)
+			#option = False#break
+			text = acao
 		else:
-			print(acao)
+			#print(acao)
+			acao = game.starting_game()
+			text = acao
 		#print(game.starting_game())
-		text = input("Digite algum comando:\n")
+		#text = input("Digite algum comando:\n")
 		data = text.encode(ENCODE)
 		sock.sendto(data, dest)
 		print(sock.getsockname())
 		data, address = sock.recvfrom(MAX_BYTES)
 		text = data.decode(ENCODE)
 		print(address, text)
+#
