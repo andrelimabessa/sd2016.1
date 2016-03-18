@@ -1,6 +1,10 @@
 import socket
+
 from play_battle_field import game
+
 from datetime import datetime
+
+import ast
 
 ENCODE = "UTF-8"
 HOST = '127.0.0.1'#'10.54.42.50'#
@@ -14,30 +18,33 @@ def client():
 		dest = (HOST, PORT)
 
 		option = True
-		#while option:
-		acao = game.starting_game()
-		if acao == 1:
-			#print(acao)
-			#option = False#break
-			text = acao
-		elif acao ==2:
-			#print(acao)
-			#option = False#break
-			text = acao
-		elif acao ==3:
-			#print(acao)
-			#option = False#break
-			text = acao
-		else:
-			#print(acao)
+		while option:
 			acao = game.starting_game()
-			text = acao
+			if int(acao) == 1:
+				#print(acao)
+				option = False#break
+				text = acao
+			elif int(acao) == 2:
+				#print(acao)
+				option = False#break
+				text = acao
+			elif int(acao) == 3:
+				option = False#break
+				text = acao
+			else:
+				#print(acao)
+				acao = game.starting_game()
+				text = acao
 		#print(game.starting_game())
 		#text = input("Digite algum comando:\n")
 		data = text.encode(ENCODE)
 		sock.sendto(data, dest)
 		print(sock.getsockname())
 		data, address = sock.recvfrom(MAX_BYTES)
-		text = data.decode(ENCODE)
-		print(address, text)
-#
+		text = ast.literal_eval(data.decode(ENCODE))
+		print(repr(text))
+		#print(address, text)
+#####
+
+def ler_dados_jogo():
+	pass
