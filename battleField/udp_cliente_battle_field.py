@@ -12,6 +12,7 @@ PORT = 5000
 MAX_BYTES = 65535
 
 game = game()
+
 def client():
 	while True:
 		sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
@@ -37,14 +38,17 @@ def client():
 				text = acao
 		#print(game.starting_game())
 		#text = input("Digite algum comando:\n")
-		data = text.encode(ENCODE)
-		sock.sendto(data, dest)
-		print(sock.getsockname())
-		data, address = sock.recvfrom(MAX_BYTES)
-		text = ast.literal_eval(data.decode(ENCODE))
-		print(repr(text))
-		#print(address, text)
-#####
+		conversa(text, dest, sock)
 
-def ler_dados_jogo():
-	pass
+def oonversa(self, text, dest, sock)
+	data = text.encode(ENCODE)
+	sock.sendto(data, dest)
+	print(sock.getsockname())
+	data, address = sock.recvfrom(MAX_BYTES)
+	#text = ast.literal_eval(data.decode(ENCODE))
+	text = data.decode(ENCODE)
+
+	#if int(acao) == 2 and int(text) == 1:
+	#	resposta = game.continuar_jogo()
+	print(repr(text))
+	#print(address, text)

@@ -31,5 +31,44 @@ class game(object):
 		#	print("Precisa escolher uma opção válida.\n\n")
 		#	starting_game()
 
+	def continuar_jogo(self):
+		self.arq = open("memory_card","r")
+		self.memory_card = ast.literal_eval(arq.readline())
+		self.arq.close()
+
+		self.tabuleiro = self.memory_card["tabuleiro"]
+		self.jogadas = self.memory_card["jogadas"]
+		self.acertos = self.memory_card["acertos"]
+
+
+		print("Você tem %d acertos e ainda possui %d jogadas."%(self.acertos, self.jogadas))
+		self.linha = input("Diga a linha que deseja: ")
+		self.coluna = input("Diga a coluna que deseja: ")
+		self.jogada = jogada(int(self.linha), int(self.coluna), self.tabuleiro)
+
+		if self.jogada == "agua":
+			self.arq = open("memory_card", "w")
+			self.memory_card = ast.literal_eval(arq.readline())
+			self.memory_card[acertos] = self.memory_card[acertos] + 1
+			self.memory_card[jogadas] = self.memory_card[jogadas] - 1
+			self.arq.write(repr(self.memory_card)+"\n")
+			self.arq.close()
+
+			resposta = "Errou abestado!!!"
+			return resposta
+		else:
+			resposta = "Acertou um navio miseráve!!!"
+			return resposta
+
+	def jogada(self, linha, coluna, tabuleiro):
+		self.tabuleiro = tabuleiro
+		self.linha = linha
+		self.coluna = coluna
+
+		if self.tabuleiro[self.linha][self.coluna] == 1:
+			return "navio"
+		else:
+			return "agua"
+
 #starting_game()
-#
+####

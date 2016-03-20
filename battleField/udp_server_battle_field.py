@@ -21,10 +21,12 @@ def server():
         if int(text) == 1:
             print("Usuário deseja ver estado do jogo.")
             text = acoes.ler_jogo()
-        #elif int(text) == 2:
-            #print(acao)
-            ##option = False#break
-            ##text = acao
+            print("Solicitação enviada.")
+        elif int(text) == 2:
+            print("Usuário deseja continuar jogo anterior.")
+            resposta = acoes.continuar_jogo()
+            if int(reposta) ==  1:
+                text = resposta
         #elif int(text) == 3:
             #print(acao)
             #option = False#break
