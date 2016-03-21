@@ -4,7 +4,7 @@ from udp_cliente_batalha_naval import client
 
 print("Você quer executar: ")
 print("1 - para servidor.")
-print("2 - para lciente.")
+print("2 - para cliente.")
 opcao = input("Opção: ")
 
 try:

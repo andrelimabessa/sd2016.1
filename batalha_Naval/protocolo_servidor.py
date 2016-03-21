@@ -2,4 +2,5 @@
 
 class ProtocoloSErvidor(object):
 
-    def
+    def tratar_requisicao(self, requisicao_cliente):
+        self.requisicao
