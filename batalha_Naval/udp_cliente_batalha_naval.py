@@ -18,25 +18,26 @@ def client():
     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     dest = (HOST, PORT)
 
-    if interacao["comeco_interacao"] == 0:
-        requisicao = protocolo_cliente.comeco_interacao()
-        print(requisicao)
-        resposta = input("Digite sua opção: ")
+    while True:
+        if interacao["comeco_interacao"] == 0:
+            requisicao = protocolo_cliente.comeco_interacao()
+            print(requisicao)
+            resposta = input("Digite sua opção: ")
 
-        interacao["novo_jogo"] = int(resposta)
-        interacao["comeco_interacao"] = 1
+            interacao["novo_jogo"] = int(resposta)
+            interacao["comeco_interacao"] = 1
 
-        server_answer = envio_de_dados(interacao["comeco_interacao"], interacao["novo_jogo"], resposta, sock, dest)
+            server_answer = envio_de_dados(interacao["comeco_interacao"], interacao["novo_jogo"], resposta, sock, dest)
 
-        print(server_answer)
+            print(server_answer)
 
-    #text = requisicao
-    #data = text.encode(ENCODE)
-    #sock.sendto(data, dest)
-    #data, address = sock.recvfrom(MAX_BYTES)
+        #text = requisicao
+        #data = text.encode(ENCODE)
+        #sock.sendto(data, dest)
+        #data, address = sock.recvfrom(MAX_BYTES)
 
-    #text = data.decode(ENCODE)
-    #print(text)
+        #text = data.decode(ENCODE)
+        #print(text)
 
 def envio_de_dados(comeco_interacao, novo_jogo, resposta, sock, dest):
     if comeco_interacao == 1:

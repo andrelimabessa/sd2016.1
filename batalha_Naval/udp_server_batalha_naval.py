@@ -2,10 +2,14 @@ import socket
 
 from datetime import datetime
 
+from protocolo_servidor import ProtocoloSeridor
+
 ENCODE = "utf-8"
 MAX_BYTES = 65535
 PORT = 5000#Porta do SErvidor
 HOST = ''#endereço do servidor
+
+protocolo_servidor = ProtocoloSeridor
 
 def server():
     orig = (HOST, PORT)
