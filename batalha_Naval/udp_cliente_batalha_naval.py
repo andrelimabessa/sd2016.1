@@ -31,14 +31,6 @@ def client():
 
             print(server_answer)
 
-        #text = requisicao
-        #data = text.encode(ENCODE)
-        #sock.sendto(data, dest)
-        #data, address = sock.recvfrom(MAX_BYTES)
-
-        #text = data.decode(ENCODE)
-        #print(text)
-
 def envio_de_dados(comeco_interacao, novo_jogo, resposta, sock, dest):
     if comeco_interacao == 1:
         if novo_jogo == 1:
