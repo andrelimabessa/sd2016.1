@@ -32,8 +32,8 @@ class game(object):
 		#	starting_game()
 
 	def continuar_jogo(self):
-		self.arq = open("memory_card","r")
-		self.memory_card = ast.literal_eval(arq.readline())
+		self.arq = open("memory_card_battle_field.txt","r")
+		self.memory_card = ast.literal_eval(self.arq.readline())
 		self.arq.close()
 
 		self.tabuleiro = self.memory_card["tabuleiro"]
@@ -44,23 +44,37 @@ class game(object):
 		print("Você tem %d acertos e ainda possui %d jogadas."%(self.acertos, self.jogadas))
 		self.linha = input("Diga a linha que deseja: ")
 		self.coluna = input("Diga a coluna que deseja: ")
-		self.jogada = jogada(int(self.linha), int(self.coluna), self.tabuleiro)
+		self.jogada = game.jogar(self,int(self.linha), int(self.coluna), self.tabuleiro)
 
 		if self.jogada == "agua":
-			self.arq = open("memory_card", "w")
-			self.memory_card = ast.literal_eval(arq.readline())
-			self.memory_card[acertos] = self.memory_card[acertos] + 1
-			self.memory_card[jogadas] = self.memory_card[jogadas] - 1
+			self.arq = open("memory_card_battle_field.txt","r")
+			self.memory_card = ast.literal_eval(self.arq.readline())
+			self.arq.close()
+
+			self.memory_card["jogadas"] = self.memory_card["jogadas"] - 1
+
+			self.arq = open("memory_card_battle_field.txt","w")
 			self.arq.write(repr(self.memory_card)+"\n")
 			self.arq.close()
 
 			resposta = "Errou abestado!!!"
 			return resposta
 		else:
+			self.arq = open("memory_card_battle_field.txt","r")
+			self.memory_card = ast.literal_eval(self.arq.readline())
+			self.arq.close()
+
+			self.memory_card["acertos"] = self.memory_card["acertos"] + 1
+			self.memory_card["jogadas"] = self.memory_card["jogadas"] - 1
+
+			self.arq = open("memory_card_battle_field.txt","w")
+			self.arq.write(repr(self.memory_card)+"\n")
+			self.arq.close()
+
 			resposta = "Acertou um navio miseráve!!!"
 			return resposta
 
-	def jogada(self, linha, coluna, tabuleiro):
+	def jogar(self,linha, coluna, tabuleiro):
 		self.tabuleiro = tabuleiro
 		self.linha = linha
 		self.coluna = coluna
@@ -70,5 +84,17 @@ class game(object):
 		else:
 			return "agua"
 
-#starting_game()
-####
+	def jogadas_esgotadas(self):
+		self.arq = open("memory_card_battle_field.txt","r")
+		self.memory_card = ast.literal_eval(self.arq.readline())
+		self.arq.close()
+
+		self.tabuleiro = self.memory_card["tabuleiro"]
+		self.jogadas = self.memory_card["jogadas"]
+		self.acertos = self.memory_card["acertos"]
+
+	def novo_jogo(self):
+		resposta = "Testando comunicação"
+		return resposta
+
+		return("\nSuas jogadas esgotaram\nResultado Final\n Acertos: %d\n"%(self.acertos))

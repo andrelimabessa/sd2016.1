@@ -12,6 +12,7 @@ PORT = 5000
 MAX_BYTES = 65535
 
 game = game()
+jogo = {}
 
 def client():
 	while True:
@@ -31,24 +32,39 @@ def client():
 				text = acao
 			elif int(acao) == 3:
 				option = False#break
-				text = acao
+				text = str(acao) + ";1"
 			else:
 				#print(acao)
 				acao = game.starting_game()
 				text = acao
-		#print(game.starting_game())
-		#text = input("Digite algum comando:\n")
-		conversa(text, dest, sock)
+		conversa(acao,text, dest, sock)
 
-def oonversa(self, text, dest, sock)
+def conversa(acao,text, dest, sock):
 	data = text.encode(ENCODE)
 	sock.sendto(data, dest)
-	print(sock.getsockname())
+	#print(sock.getsockname())
 	data, address = sock.recvfrom(MAX_BYTES)
 	#text = ast.literal_eval(data.decode(ENCODE))
 	text = data.decode(ENCODE)
+	resposta = tratar_requisicoes(acao,text, dest, sock)
 
-	#if int(acao) == 2 and int(text) == 1:
-	#	resposta = game.continuar_jogo()
-	print(repr(text))
-	#print(address, text)
+def tratar_requisicoes(acao,text, dest, sock):
+	if int(acao) == 2:
+		if int(text) == 1:
+			resposta = game.continuar_jogo()
+			print(resposta)
+		elif int(text) == 2:
+			resposta = game.jogadas_esgotadas()
+			print(resposta)
+	elif int(acao) == 3:
+		resposta = text[0]
+		if int(resposta) == 1:
+			print(text[4::])
+			text = str(acao) + ";2;"# + str(envio_dados_do_jogo())
+
+def envio_dados_do_jogo():
+	jogo["jogador"] = input("Nome do Jogador: ")
+	jogo["linhas"] = input("Quantas Linhas: ")
+	jogo["colunas"] = input("Quantas Colunas: ")
+	jogo["navios"] = input["Quantos Navios: "]
+	return(repr(jogo))
