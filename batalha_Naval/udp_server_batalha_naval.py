@@ -20,25 +20,20 @@ def server():
 
     while True:
         data, address = sock.recvfrom(MAX_BYTES)
-        requisicao_cliente = data.decode(ENCODE)
+        requisicao_cliente = ast.literal_eval(data.decode(ENCODE))
+        resposta_tratamento = tratar_requisicao(requisicao_cliente)
 
-        protocolo = tratar_requisicao(requisicao_cliente)
-
-        protocolo_servidor.tratar_requisicao(protocolo)
-
-        print(type(requisicao_cliente))
-
-        print(text)
-
-        text = "Recebi o novo formato de solicitação!"
-        data = text.encode(ENCODE)
+        if resposta_tratamento == "criar_tabuleiro":
+            requisicao_cliente["criar_tabuleiro"] = 1
+            print("Solicitando dados de tabuleiro.")
+            resposta_requisicao = str(requisicao_cliente)
+        data = resposta_requisicao.encode(ENCODE)
         sock.sendto(data, address)
     sock.close()
 
 def tratar_requisicao(requisicao):
-    requisicao = ast.literal_eval(requisicao)
     if int(requisicao["comeco_interacao"]) == 1:
         if int(requisicao["novo_jogo"]) == 1:
-            if int(requisicao["requisicao"]) == 1:
-                resposta_requisicao_servidor = "criar_tabuleiro"
-                return resposta_requisicao_servidor
+            if int(requisicao["criar_tabuleiro"]) == 0:
+                resposta_requisicao = "criar_tabuleiro"
+                return resposta_requisicao
