@@ -28,12 +28,20 @@ def server():
             tabuleiro = Tabuleiro(5)
             tabuleiro.preencher(5, 3)
 
-            matriz = ', '.join(str(x) for x in tabuleiro.matriz)
+            print('### Jogo Criado ####')
 
-            sock.sendto(matriz, address)
             sock.sendto('JOGUE', address)
+        else:
+            message = text.split(',')
+            if (message[0] == 'RESPOSTA'):
+                x = message[1]
+                y = message[2]
 
-        #Envia resposta
-        text = "Your data was " + str(len(data)) + " bytes long"
+                resposta = tabuleiro.jogar(x, y)
+                if (resposta):
+                    print('Acertou')
+                else:
+                    print('Erro')
+
 
     sock.close()

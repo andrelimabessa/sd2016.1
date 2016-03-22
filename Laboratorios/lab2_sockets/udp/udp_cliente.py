@@ -12,9 +12,10 @@ def client():
     #Enviod de dados
     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     dest = (HOST, PORT)
-    text = input("Digite algum comando:\n")
 
     print("1 - Iniciar jogo")
+
+    text = input("Digite algum comando:\n")
     if (text == 1):
         sock.sendto('START_GAME', dest)
 
@@ -23,7 +24,13 @@ def client():
 
     #Resposta de envio ao servidor
 
-    print(sock.getsockname())
     data, address = sock.recvfrom(MAX_BYTES)  # Danger! See Chapter 2
     text = data.decode(ENCODE)
-    print(address, text)
+
+    if (text == 'JOGUE'):
+        print("Informe as coordenadas no tabuleiro")
+        x = input("X: ")
+        y = input("Y: ")
+
+        message = 'RESPOSTA,' + str(x) + ',' + str(y)
+        sock.sendto(message, dest)
