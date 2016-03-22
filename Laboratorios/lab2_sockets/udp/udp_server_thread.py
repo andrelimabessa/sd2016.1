@@ -1,4 +1,5 @@
-# coding: utf-8
+# -*- coding: utf-8 -*-
+
 import socket
 import threading#threads a nível de usuário
 from datetime import datetime

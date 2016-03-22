@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import sys
 from udp_server import server
 from udp_cliente import client
