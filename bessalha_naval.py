@@ -16,6 +16,9 @@ class Bessalha_Naval(object):
             self.qt_Tiros = int(linha[1])
         arq.close()
 
+        '''Existirá uma tela pedindo o nome do jogador. Cada jogador terá seu arquivo de jogo. O arquivo lista.txt, na verdade será 
+        o nome do usuario.txt. Caso exista um arquivo, ele lê e recomeça o jogo de onde parou. Caso não, o jogo começa do zero.'''
+
     def mostrarTabuleiro(self):
         for i in self.tabuleiro:
             print (i)
