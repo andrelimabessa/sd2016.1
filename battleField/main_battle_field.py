@@ -2,10 +2,10 @@ import sys
 from udp_server_battle_field import server
 from udp_cliente_battle_field import client
 
-print("Você quer executar: ")
+print("Voce quer executar: ")
 print("1 para servidor.")
 print("2 para cliente.")
-opcao = input("Opção: ")
+opcao = input("Opcao: ")
 
 try:
 	if int(opcao) == 1:

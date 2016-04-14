@@ -24,18 +24,18 @@ def server():
         data, address = sock.recvfrom(MAX_BYTES)
         text = data.decode(ENCODE)
         if int(text[0]) == 1:
-            print("Usuário deseja ver estado do jogo.")
+            print("Usuario deseja ver estado do jogo.")
             text = acoes.ler_jogo()
             print("Resposta enviada.")
         elif int(text[0]) == 2:
-            print("Usuário deseja continuar jogo anterior.")
+            print("Usuario deseja continuar jogo anterior.")
             resposta = acoes.continuar_jogo()
             if int(resposta) ==  1:
                 text = str(resposta)
                 print("Resposta enviada.")
         elif int(text[0]) == 3:
             if int(text[2]) == 1:
-                print("Usuário deseja iniciar novo jogo.")
+                print("Usuario deseja iniciar novo jogo.")
                 text = "1 - Diga o Nome do Jogador. O tamanho do tabuleiro e a quantidade de Navios"
             elif int(text[2]) == 2:
                 text = "teste!!!!!!"

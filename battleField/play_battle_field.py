@@ -7,28 +7,28 @@ class game(object):
 		print("O que deseja fazer?")
 		print("1 - Ver estado do jogo.")
 		print("2 - Continuar jogo anterior.")
-		print("3 - Começar novo jogo.")
+		print("3 - Comecar novo jogo.")
 
-		acao = input("Ação: ")
+		acao = input("Acao: ")
 
 		#try:
 		if int(acao) == 1:
-			print("Você escolheu: Ver estado do jogo")
+			print("Voce escolheu: Ver estado do jogo")
 			#print("classe game")
 			return acao
 		elif int(acao) == 2:
-			print("Você escolheu: Continuar jogo anterior.")
+			print("Voce escolheu: Continuar jogo anterior.")
 			#print(acao)
 			return acao
 		elif int(acao) == 3:
-			print("Você escolheu: Começar novo jogo.")
+			print("Voce escolheu: Comecar novo jogo.")
 			#print(acao)
 			return acao
 		else:
-			print("Precisa escolher uma opção válida.\n\n")
+			print("Precisa escolher uma opcao valida.\n\n")
 			return acao
 		#except :
-		#	print("Precisa escolher uma opção válida.\n\n")
+		#	print("Precisa escolher uma opcao valida.\n\n")
 		#	starting_game()
 
 	def continuar_jogo(self):
@@ -71,7 +71,7 @@ class game(object):
 			self.arq.write(repr(self.memory_card)+"\n")
 			self.arq.close()
 
-			resposta = "Acertou um navio miseráve!!!"
+			resposta = "Acertou um navio miserave!!!"
 			return resposta
 
 	def jogar(self,linha, coluna, tabuleiro):
@@ -94,7 +94,7 @@ class game(object):
 		self.acertos = self.memory_card["acertos"]
 
 	def novo_jogo(self):
-		resposta = "Testando comunicação"
+		resposta = "Testando comunicacao"
 		return resposta
 
 		return("\nSuas jogadas esgotaram\nResultado Final\n Acertos: %d\n"%(self.acertos))
