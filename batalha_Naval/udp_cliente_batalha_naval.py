@@ -1,4 +1,5 @@
 import socket
+import ast
 
 from datetime import datetime
 
@@ -28,12 +29,15 @@ def client():
           print("Comecando nova conexao...")
           protocolo_cliente.comeco_interacao(interacao)
           if interacao["novo_jogo"] == 1:
-            print("estou entrando nesse if mas nao devia")
-            print(envio_de_dados(interacao, sock, dest))
-        elif interacao["comeco_interacao"] == 1:
-          print("Estou no segundo if!!!!")
-          print(interacao)
-          input()
+            print("Voce solicitou iniciar um novo jogo.")
+            print("Enviando requisicao...")
+            
+            interacao = ast.literal_eval(envio_de_dados(interacao, sock, dest))
+            
+            if interacao["criar_tabuleiro"] == 1:
+              prit
+            
+        input()
 
 def envio_de_dados(interacao, sock, dest):
     if interacao["comeco_interacao"] == 1:
@@ -42,4 +46,4 @@ def envio_de_dados(interacao, sock, dest):
             sock.sendto(requisicao_servidor, dest)
             resposta_servidor, address = sock.recvfrom(MAX_BYTES)
             resposta_requisicao = resposta_servidor.decode(ENCODE)
-            return resposta_requisicao
+            return str(resposta_requisicao)
