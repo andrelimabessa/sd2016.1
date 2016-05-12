@@ -1,8 +1,9 @@
  # coding=UTF-8
 import sys
-from rpyc_server import server
-from rpyc_client import client
+from udp_server import server
+from udp_cliente import client
 
+# ENCODE = "UTF-8"
 print("Você quer executar:")
 print("1 para servidor")
 print("2 para cliente")

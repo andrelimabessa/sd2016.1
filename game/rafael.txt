@@ -1,0 +1,1 @@
+[['erro', 'erro', 'erro', 'ok', 'ok'], ['erro', 'erro', 'erro', 'erro', 'erro'], ['erro', 'erro', 'erro', 'acertou', 'erro'], ['erro', 'erro', 'erro', 'erro', 'erro'], ['erro', 'erro', 'erro', 'erro', 'erro']]
