@@ -9,7 +9,7 @@ from protocolo_servidor import ProtocoloServidor
 ENCODE = "utf-8"
 MAX_BYTES = 65535
 PORT = 5000#Porta do SErvidor
-HOST = ''#endereço do servidor
+HOST = ''#endereco do servidor
 
 protocolo_servidor = ProtocoloServidor
 

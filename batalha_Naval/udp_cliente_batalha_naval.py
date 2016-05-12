@@ -25,13 +25,15 @@ def client():
     dest = (HOST, PORT)
     while True:
         if interacao["comeco_interacao"] == 0:
-            print("Começando nova conexão...")
-            protocolo_cliente.comeco_interacao(interacao)
-            if interacao["novo_jogo"] == 1:
-                print(envio_de_dados(interacao, sock, dest))
+          print("Comecando nova conexao...")
+          protocolo_cliente.comeco_interacao(interacao)
+          if interacao["novo_jogo"] == 1:
+            print("estou entrando nesse if mas nao devia")
+            print(envio_de_dados(interacao, sock, dest))
         elif interacao["comeco_interacao"] == 1:
-            print(interacao)
-            input()
+          print("Estou no segundo if!!!!")
+          print(interacao)
+          input()
 
 def envio_de_dados(interacao, sock, dest):
     if interacao["comeco_interacao"] == 1:
