@@ -2,5 +2,5 @@
 
 class ProtocoloServidor(object):
 
-    def criar_tabuleiro(self):
-        pass
+    def criar_tabuleiro(self, requisicao):
+        print("Informe a quantidade de colunas")

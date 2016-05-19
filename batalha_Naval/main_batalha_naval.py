@@ -14,8 +14,9 @@ try:
     elif int(opcao) == 2:
         print("Cliente ativado:\n")
         client()
-except :
-    for val in sys.exec_info():
+
+except : 
+    for val in sys.exc_info():
         print(val)
 
 input()

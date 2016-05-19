@@ -12,6 +12,11 @@ PORT = 5000#Porta do SErvidor
 HOST = ''#endereco do servidor
 
 protocolo_servidor = ProtocoloServidor
+jogo = {}
+jogo["jogo1"] = {}
+jogo["jogo1"]["qtd_colunas"] = 0
+jogo["jogo1"]["qtd_linhas"] = 0
+jogo["jogo1"]["tabuleiro"] = []
 
 def server():
     orig = (HOST, PORT)
@@ -32,8 +37,11 @@ def server():
     sock.close()
 
 def tratar_requisicao(requisicao):
-    if int(requisicao["comeco_interacao"]) == 1:
-        if int(requisicao["novo_jogo"]) == 1:
-            if int(requisicao["criar_tabuleiro"]) == 0:
-                resposta_requisicao = "criar_tabuleiro"
-                return resposta_requisicao
+  if int(requisicao["comeco_interacao"]) == 1:
+      if int(requisicao["novo_jogo"]) == 1:
+        if int(requisicao["criar_tabuleiro"]) == 0:
+          resposta_requisicao = "criar_tabuleiro"
+          return resposta_requisicao
+      elif int(requisicao["novo_jogo"]) == 2:
+        if int(requisicao["criar_tabuleiro"]) == 1:
+          protocolo_servidor.criar_tabuleiro(jogo)

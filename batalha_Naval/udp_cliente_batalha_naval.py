@@ -32,18 +32,35 @@ def client():
             print("Voce solicitou iniciar um novo jogo.")
             print("Enviando requisicao...")
             
-            interacao = ast.literal_eval(envio_de_dados(interacao, sock, dest))
+            resposta = ast.literal_eval(envio_de_dados(interacao, sock, dest))
+            atualiza_interacao(interacao, resposta)
             
-            if interacao["criar_tabuleiro"] == 1:
-              prit
+            if interacao[criar_tabuleiro] == 1:
+              protocolo_cliente.criar_tabuleiro(interacao)
+              if interacao["criar_tabuleiro"] == 1:
+                resposta = ast.literal_eval(envio_de_dados(interacao, sock, dest))
+            
+            print resposta
+            print interacao
             
         input()
 
 def envio_de_dados(interacao, sock, dest):
     if interacao["comeco_interacao"] == 1:
         if interacao["novo_jogo"] == 1:
+          requisicao_servidor = str(interacao).encode(ENCODE)
+          sock.sendto(requisicao_servidor, dest)
+          resposta_servidor, address = sock.recvfrom(MAX_BYTES)
+          resposta_requisicao = resposta_servidor.decode(ENCODE)
+          return str(resposta_requisicao)
+        elif interacao["novo_jogo"] == 2:
+          if interacao["criar_tabuleiro"] == 1:
             requisicao_servidor = str(interacao).encode(ENCODE)
             sock.sendto(requisicao_servidor, dest)
             resposta_servidor, address = sock.recvfrom(MAX_BYTES)
             resposta_requisicao = resposta_servidor.decode(ENCODE)
-            return str(resposta_requisicao)
+            return str(respsota_requisicao)
+          
+def atualiza_interacao(interacao, resposta):
+  for campo in interacao:
+    interacao[campo] = resposta[campo]

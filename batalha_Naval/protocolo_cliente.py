@@ -14,3 +14,17 @@ class ProtocoloCliente(object):
                 self.interacao["comeco_interacao"] = 1
                 self.interacao["novo_jogo"] = 1
             return self.interacao
+
+def criar_tabuleiro(self, interacao):
+  self.interacao = interacao
+  if interacao["criar_tabuleiro"] == 1:
+    print("Esta disponivel a criacao de um novo tabuleiro.")
+    print("Escolha a opcao:")
+    print("0 - Para nao criar o tabuleiro.")
+    print("1 - Para enviar solicitacao de criacao de tabuleiro.")
+    self.resposta_usuario = input("Opcao desejada: ")
+    
+    if int(self.resposta_usuario) == 1:
+      self.interacao["criar_tabuleiro"] = 1
+      self.interacao["novo_jogo"] = 2
+    return self.interacao
