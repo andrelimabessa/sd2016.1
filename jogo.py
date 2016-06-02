@@ -4,7 +4,6 @@ class BatalhaNaval(object):
 
     def __init__(self, tamanho_tabuleiro):
         print("---------------------------------------------")
-        #print("Defina o tamanho do tabuleiro de 5 a 10:")
         valor = tamanho_tabuleiro
         tamanho = int(valor)
         self.tabuleiro = [[0 for i in range(tamanho)] for j in range(tamanho)]
@@ -12,18 +11,14 @@ class BatalhaNaval(object):
         print("Tabuleiro criado com sucesso!!!")
 
     def imprimeTabuleiro(self):
-        for i in self.tabuleiro:
-            print (i)
+        for linha in self.tabuleiro:
+            print (linha)
 
     def insereNavios(self):
-        i = 0
-        posicao = 0
         print("---------------------------------------------")
-        while (i < 5):
-            self.tabuleiro[posicao][posicao] = 1
-            posicao = random.randint(0,4)
-            # print(valores)
-            i+=1
+        for linha in self.tabuleiro:
+            posicao = random.randint(0,len(linha)-1)
+            linha[posicao] = 1
         print("Navios inseridos com sucesso!!!!")
 
     def jogada(self, linha, coluna):

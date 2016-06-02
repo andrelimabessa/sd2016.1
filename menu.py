@@ -18,7 +18,7 @@ class Menu(object):
         map_comand["opcao"] = opcao
 
         if opcao == "1":
-            print("Defina o tamanho do tabuleiro de 5 a 10:")
+            print("Defina o tamanho do tabuleiro:")
             tamanho_tabuleiro = input("Valor: \n")
             print("Deseja inserir os navios(S - Sim; N - Não)?")
             inserir_navios = input("Resposta: \n")

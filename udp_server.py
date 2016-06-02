@@ -19,6 +19,7 @@ def server():
         text = data.decode(ENCODE)
         map = ast.literal_eval(text)
         text = map["opcao"]
+
         if text == "1":
             jogo = BatalhaNaval(map["tamanho_tabuleiro"])
             if map["inserir_navios"] == "S":
