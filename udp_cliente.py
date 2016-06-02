@@ -13,7 +13,7 @@ def client():
     """ Procedimento responsável por enviar dados para o servidor e receber alguma resposta por conta disso """
 
     while True:
-        #Enviod de dados
+        #Envio de dados
         sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         dest = (HOST, PORT)
         text = exibe.exibeMenu()
