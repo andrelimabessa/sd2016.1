@@ -1,6 +1,6 @@
 import socket
 from datetime import datetime
-from jogo import *
+from jogo import BatalhaNaval
 
 import ast
 ENCODE = "UTF-8"
@@ -20,13 +20,19 @@ def server():
         map = ast.literal_eval(text)
         text = map["opcao"]
         if text == "1":
-            jogo = BatalhaNaval()
-            jogo.insereNavios()
-            resp = "Tabuleiro criado"
+            jogo = BatalhaNaval(map["tamanho_tabuleiro"])
+            if map["inserir_navios"] == "S":
+                jogo.insereNavios()
+                resp = "Tabuleiro criado com sucesso e navios inseridos!!!!"
+            else:
+                resp = "Tabuleiro criado com sucesso!!!"
         elif text == "2":
             resp = "Opção 2"
         elif text == "3":
             resp = jogo.jogada(map["posX"], map["posY"])
+        elif text == "4":
+            jogo.imprimeTabuleiro()
+            resp = "Tabuleiro impresso!!"
         else:
             resp = "Opção Inválida!"
         #print(address, text)

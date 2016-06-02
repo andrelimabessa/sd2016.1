@@ -2,10 +2,10 @@ import random
 
 class BatalhaNaval(object):
 
-    def __init__(self):
+    def __init__(self, tamanho_tabuleiro):
         print("---------------------------------------------")
-        print("Defina o tamanho do tabuleiro de 5 a 10:")
-        valor = 5
+        #print("Defina o tamanho do tabuleiro de 5 a 10:")
+        valor = tamanho_tabuleiro
         tamanho = int(valor)
         self.tabuleiro = [[0 for i in range(tamanho)] for j in range(tamanho)]
         print("---------------------------------------------")
@@ -24,7 +24,8 @@ class BatalhaNaval(object):
             posicao = random.randint(0,4)
             # print(valores)
             i+=1
-        print("saio inserir navio")    
+        print("Navios inseridos com sucesso!!!!")
+
     def jogada(self, linha, coluna):
 
         numJogada = 0
