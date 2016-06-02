@@ -23,8 +23,6 @@ def client():
 
         #Resposta de envio ao servidor
         data, address = sock.recvfrom(MAX_BYTES)  # Danger! See Chapter 2
-        text = data.decode(ENCODE)
+        text = ast.literal_eval(data.decode(ENCODE))
 
         print(text)
-        print(type(text))
-        print(ast.literal_eval(text))
