@@ -4,15 +4,17 @@ class BatalhaNaval(object):
 
     def __init__(self, tamanho_tabuleiro):
         print("---------------------------------------------")
-        valor = tamanho_tabuleiro
-        tamanho = int(valor)
-        self.tabuleiro = [[0 for i in range(tamanho)] for j in range(tamanho)]
+
+        self.tabuleiro = [[0 for i in range(int(tamanho_tabuleiro))] for j in range(int(tamanho_tabuleiro))]
+        self.acertos = 0
+        self.jogadas = int(tamanho_tabuleiro)
+
         print("---------------------------------------------")
         print("Tabuleiro criado com sucesso!!!")
 
     def imprimeTabuleiro(self):
         for linha in self.tabuleiro:
-            print (linha)
+            print(linha)
 
     def insereNavios(self):
         print("---------------------------------------------")

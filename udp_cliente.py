@@ -1,6 +1,7 @@
 import socket
 from datetime import datetime
 from menu import Menu
+import ast
 
 ENCODE = "UTF-8"
 HOST = '127.0.0.1'  # Endereco IP do Servidor
@@ -23,6 +24,7 @@ def client():
         #Resposta de envio ao servidor
         data, address = sock.recvfrom(MAX_BYTES)  # Danger! See Chapter 2
         text = data.decode(ENCODE)
-        print(text)
 
-    #print(address, text)
+        print(text)
+        print(type(text))
+        print(ast.literal_eval(text))

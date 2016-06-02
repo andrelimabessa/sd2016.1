@@ -12,7 +12,7 @@ class Menu(object):
         print("3 - Informar Jogada")
         print("4 - Imprimir Tabuleiro")
 
-        opcao = input('\n')
+        opcao = input('Opção: \n')
 
         map_comand = {}
         map_comand["opcao"] = opcao
@@ -20,11 +20,13 @@ class Menu(object):
         if opcao == "1":
             print("Defina o tamanho do tabuleiro:")
             tamanho_tabuleiro = input("Valor: \n")
+
             print("Deseja inserir os navios(S - Sim; N - Não)?")
             inserir_navios = input("Resposta: \n")
+
             map_comand["tamanho_tabuleiro"] = tamanho_tabuleiro
             map_comand["inserir_navios"] = inserir_navios
-            #map_comand["naviosInseridos"] = "sim"
+
             print("Dados recebidos com sucesso. Enviando Requisição para o servidor...")
 
         if opcao == "3":

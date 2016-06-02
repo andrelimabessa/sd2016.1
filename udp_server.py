@@ -13,8 +13,8 @@ def server():
     orig = (HOST, PORT)
     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     sock.bind(orig)
+
     while True:
-        #recebi dados
         data, address = sock.recvfrom(MAX_BYTES)
         text = data.decode(ENCODE)
         map = ast.literal_eval(text)
@@ -33,12 +33,10 @@ def server():
             resp = jogo.jogada(map["posX"], map["posY"])
         elif text == "4":
             jogo.imprimeTabuleiro()
-            resp = "Tabuleiro impresso!!"
+            resp = str(jogo.tabuleiro)
         else:
             resp = "Opção Inválida!"
-        #print(address, text)
-        #Envia resposta
-        #text = "Your data was " + str(len(data)) + " bytes long"
+
         data = resp.encode(ENCODE)
         sock.sendto(data, address)
     sock.close()
