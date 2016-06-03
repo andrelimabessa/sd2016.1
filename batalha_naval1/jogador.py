@@ -1,6 +1,6 @@
 #jogador.py
 
-class Jogador(objrct):
+class Jogador(object):
 
     def __init__(self, nome_jogador):
         self.nome_jogador = nome_jogador
