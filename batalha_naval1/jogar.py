@@ -2,6 +2,7 @@
 
 from jogo import Jogo
 import ast
+import sys
 
 class Jogar(object):
 
@@ -14,13 +15,12 @@ class Jogar(object):
             print("1 - Novo Jogo.")
             self.opcao = input("Opção: \n")
 
-            if isinstance(ast.literal_eval(self.opcao), str):
-                print("Opção Inválida!!!\n\n")
-                opcao = False
-            elif int(self.opcao) == 1:
-                novo_jogo(self)
-            else:
-                print("Opção Inválida!!!\n\n")
+            try:
+                if isinstance(ast.literal_eval(self.opcao), int):
+                    if int(self.opcao) == 1:
+                        novo_jogo(self)
+            except ValueError:
+                print(("Opção inválida: " + repr(self.opcao)))
                 self.opcao = False
 
 def novo_jogo(self):
@@ -49,12 +49,15 @@ def novo_jogo(self):
             jogo.resetar_acertos()
             jogo.resetar_jogadas_restantes()
         elif int(opcao) == 2:
-            deu_certo = False
-            while deu_certo == False:
-                linha = input("Digite a linha: \n")
-                coluna = input("Digite a colluna: \n")
+            if jogo.get_jogadas_restante() > 0:
+                deu_certo = False
+                while deu_certo == False:
+                    linha = input("Digite a linha: \n")
+                    coluna = input("Digite a colluna: \n")
 
-                deu_certo = jogo.realizar_jogada(linha, coluna)
+                    deu_certo = jogo.realizar_jogada(linha, coluna)
+            else:
+                print("Suas Jogadas esgotaram!!!")
         else:
             print("Opção Inválida!!!\n\n")
 
