@@ -104,7 +104,7 @@ print(impares[::-1])
 lista_zeros = [0 for i in range(10)]
 print(lista_zeros)
 
-matriz = [ [0 for j in range(3) for i in range(5)] ]
+matriz = [ [0 for j in range(3)] for i in range(5) ]
 print(matriz)
 
 def nome_sobrenome(nome, sobrenome):
