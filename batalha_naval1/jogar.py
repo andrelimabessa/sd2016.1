@@ -23,8 +23,20 @@ class Jogar(object):
                 print(("Opção inválida: " + repr(self.opcao)))
                 self.opcao = False
 
+    def get_opcao(self):
+        return self.opcao
+
+    def set_opcao(self, value):
+        self.opcao = value
+
+    def get_ativo(self):
+        return self.ativo
+
+    def set_ativo(self, value):
+        self.ativo = value
+
 def novo_jogo(self):
-    self.ativo = True
+    self.set_ativo(True)
 
     nome_jogador = (input("Digite o nome do jogador: \n"))
     print("Diga a quantidade de linhas do tabuleiro: ")
@@ -39,6 +51,9 @@ def novo_jogo(self):
         print("Escolha o que deseja fazer: ")
         print("1 - Distribuir Navios.")
         print("2 - Realizar Jogada.")
+        print("3 - Ver estado do jogo.")
+        print("4 - Salvar")
+        print("5 - Sair.")
 
         opcao = input("Opção: \n")
 
@@ -58,6 +73,20 @@ def novo_jogo(self):
                     deu_certo = jogo.realizar_jogada(linha, coluna)
             else:
                 print("Suas Jogadas esgotaram!!!")
+        elif int(opcao) == 3:
+            print("Tabuleiro:")
+            print("Qtd de linhas: %i"%(jogo.tabuleiro.get_qtd_linhas()))
+            print("Qtd de colunas: %i"%(jogo.tabuleiro.get_qtd_colunas()))
+            print("Pontuação: ")
+            print("Acertos: %i"%(jogo.get_acertos()))
+            print("Jogadas restantes: %i"%(jogo.get_jogadas_restante()))
+        elif int(opcao) == 4:
+            arq = open("memory_card.txt", "w")
+            arq.write(repr(jogo)+"\n")
+            arq.close()
+            print("Jogo Salvo!")
+        elif int(opcao) == 5:
+            print("Testando a saida")
         else:
             print("Opção Inválida!!!\n\n")
 
