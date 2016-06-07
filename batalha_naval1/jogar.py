@@ -13,12 +13,15 @@ class Jogar(object):
         while self.opcao == False:
             print("Escolha a opção: ")
             print("1 - Novo Jogo.")
+            print("2 - Continuar Jogo.")
             self.opcao = input("Opção: \n")
 
             try:
                 if isinstance(ast.literal_eval(self.opcao), int):
-                    if int(self.opcao) == 1:
-                        novo_jogo(self)
+                    if int(self.get_opcao()) == 1:
+                        self.set_opcao(novo_jogo(self))
+                    elif int(self.get_opcao()) == 2:
+                        self.set_opcao(continuar_jogo(self))
             except ValueError:
                 print(("Opção inválida: " + repr(self.opcao)))
                 self.opcao = False
@@ -47,7 +50,7 @@ def novo_jogo(self):
     jogo = Jogo(nome_jogador, qtd_linhas, qtd_colunas)
     jogo.informacoes_do_jogo()
 
-    while self.ativo:
+    while self.get_ativo():
         print("Escolha o que deseja fazer: ")
         print("1 - Distribuir Navios.")
         print("2 - Realizar Jogada.")
@@ -63,8 +66,9 @@ def novo_jogo(self):
             jogo.tabuleiro.distribuir_navios()
             jogo.resetar_acertos()
             jogo.resetar_jogadas_restantes()
+            self.set_ativo(True)
         elif int(opcao) == 2:
-            if jogo.get_jogadas_restante() > 0:
+            if jogo.get_jogadas_restantes() > 0:
                 deu_certo = False
                 while deu_certo == False:
                     linha = input("Digite a linha: \n")
@@ -73,25 +77,24 @@ def novo_jogo(self):
                     deu_certo = jogo.realizar_jogada(linha, coluna)
             else:
                 print("Suas Jogadas esgotaram!!!")
+
+            self.set_ativo(True)
         elif int(opcao) == 3:
-            print("Tabuleiro:")
-            print("Qtd de linhas: %i"%(jogo.tabuleiro.get_qtd_linhas()))
-            print("Qtd de colunas: %i"%(jogo.tabuleiro.get_qtd_colunas()))
-            print("Pontuação: ")
-            print("Acertos: %i"%(jogo.get_acertos()))
-            print("Jogadas restantes: %i"%(jogo.get_jogadas_restante()))
+            jogo.ver_estado_do_jogo()
+            self.set_ativo(True)
         elif int(opcao) == 4:
-            arq = open("memory_card.txt", "w")
+            arq = open("memoria.txt", "w")
             arq.write(repr(jogo)+"\n")
             arq.close()
             print("Jogo Salvo!")
+            self.set_ativo(True)
         elif int(opcao) == 5:
-            print("Testando a saida")
+            self.set_ativo(False)
+            print("Saindo do Jogo!!!!")
         else:
             print("Opção Inválida!!!\n\n")
 
-    jogo.tabuleiro.distribuir_navios()
-    jogo.tabuleiro.imprime_tabuleiro()
+    return self.get_ativo()
 
 jogar = Jogar()
 jogar.inicio()
