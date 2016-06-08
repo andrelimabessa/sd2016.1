@@ -96,5 +96,10 @@ def novo_jogo(self):
 
     return self.get_ativo()
 
+def continuar_jogo(self):
+    self.set_ativo(True)
+
+    arq = open("memoria.txt","r")
+
 jogar = Jogar()
 jogar.inicio()
