@@ -3,6 +3,7 @@
 from jogo import Jogo
 import ast
 import sys
+import menus
 
 class Jogar(object):
 
@@ -11,10 +12,8 @@ class Jogar(object):
         self.ativo = False
 
         while self.opcao == False:
-            print("Escolha a opção: ")
-            print("1 - Novo Jogo.")
-            print("2 - Continuar Jogo.")
-            self.opcao = input("Opção: \n")
+            self.set_opcao(menus.menu_inicial())
+            #self.opcao = menus.menu_inicial()
 
             try:
                 if isinstance(ast.literal_eval(self.opcao), int):
@@ -41,24 +40,14 @@ class Jogar(object):
 def novo_jogo(self):
     self.set_ativo(True)
 
-    nome_jogador = (input("Digite o nome do jogador: \n"))
-    print("Diga a quantidade de linhas do tabuleiro: ")
-    qtd_linhas = input("Quantidade de Linhas: \n")
-    print("Diga a quantidade de colunas do tabuleiro: ")
-    qtd_colunas= input("Quantidade de Colunas: \n")
+    #Atribuição de múltiplos atributos através do retorno de uma tupla de valores na função que está sendo chamada.
+    nome_jogador, qtd_linhas, qtd_colunas = menus.menu_novo_jogo_abertura()
 
     jogo = Jogo(nome_jogador, qtd_linhas, qtd_colunas)
     jogo.informacoes_do_jogo()
 
     while self.get_ativo():
-        print("Escolha o que deseja fazer: ")
-        print("1 - Distribuir Navios.")
-        print("2 - Realizar Jogada.")
-        print("3 - Ver estado do jogo.")
-        print("4 - Salvar")
-        print("5 - Sair.")
-
-        opcao = input("Opção: \n")
+        opcao = menus.menu_novo_jogo()
 
         if isinstance(ast.literal_eval(opcao), str):
             print("Opção Inválida!!!\n\n")
@@ -67,6 +56,8 @@ def novo_jogo(self):
             jogo.resetar_acertos()
             jogo.resetar_jogadas_restantes()
             self.set_ativo(True)
+            print("\n")
+
         elif int(opcao) == 2:
             if jogo.get_jogadas_restantes() > 0:
                 deu_certo = False
@@ -75,22 +66,35 @@ def novo_jogo(self):
                     coluna = input("Digite a colluna: \n")
 
                     deu_certo = jogo.realizar_jogada(linha, coluna)
+                    print("\n")
             else:
                 print("Suas Jogadas esgotaram!!!")
+                print("\n")
 
             self.set_ativo(True)
+
         elif int(opcao) == 3:
             jogo.ver_estado_do_jogo()
             self.set_ativo(True)
+
         elif int(opcao) == 4:
-            arq = open("memoria.txt", "w")
-            arq.write(repr(jogo)+"\n")
-            arq.close()
+            jogo.salvar_jogo()
             print("Jogo Salvo!")
             self.set_ativo(True)
+            print("\n")
+
         elif int(opcao) == 5:
             self.set_ativo(False)
             print("Saindo do Jogo!!!!")
+            print("\n")
+
+        elif int(opcao) == 6:
+            print("\n")
+            print("Tabuleiro:")
+            jogo.tabuleiro.imprime_tabuleiro()
+            self.set_ativo(True)
+            print("\n")
+
         else:
             print("Opção Inválida!!!\n\n")
 

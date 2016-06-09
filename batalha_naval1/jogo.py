@@ -40,9 +40,11 @@ class Jogo(object):
         return self.tabuleiro.get_tabuleiro()
 
     def informacoes_do_jogo(self):
-        print("\nNome do jogador: %s"%(self.get_nome_jogador()))
+        print("\n")
+        print("Nome do jogador: %s"%(self.get_nome_jogador()))
         print("Quantidade de Linhas do Tabuleiro: %i"%(self.get_qtd_linhas()))
         print("Quantidade de Colunas do Tabuleiro: %i"%(self.get_qtd_colunas()))
+        print("\n")
 
     def resetar_acertos(self):
         self.acertos = 0
@@ -59,15 +61,19 @@ class Jogo(object):
             if tabuleiro[int(linha)][int(coluna)] == 1:
                 self.set_acertos()
                 self.set_jogadas_restantes()
+                print("\n")
                 print("Acertou Miseráve!!!!")
                 print("Você acertou %i tiros"%(self.get_acertos()))
                 print("Você ainda possui %i jogadas restantes!!"%(self.get_jogadas_restantes()))
+                print("\n")
                 return True
             else:
                 self.set_jogadas_restantes()
+                print("\n")
                 print("Tiro na água chapa!!!")
                 print("Você acertou %i tiros"%(self.get_acertos()))
                 print("Você ainda possui %i jogadas restantes!!"%(self.get_jogadas_restantes()))
+                print("\n")
                 return True
         else:
             return False
@@ -77,7 +83,18 @@ class Jogo(object):
         print("Tabuleiro:")
         print("Qtd de linhas: %i"%(self.get_qtd_linhas()))
         print("Qtd de colunas: %i"%(self.get_qtd_colunas()))
+        print("\n")
         print("Pontuação: ")
         print("Acertos: %i"%(self.get_acertos()))
         print("Jogadas restantes: %i"%(self.get_jogadas_restantes()))
         print("\n")
+
+    def salvar_jogo(self):
+        memoria = {}
+        memoria["jogador"] = self.get_nome_jogador()
+        memoria["tabuleiro"] = self.get_tabuleiro()
+        memoria["acertos"] = self.get_acertos()
+        memoria["jogadas_restantes"] = self.get_jogadas_restantes()
+        arq = open("memoria.txt","w")
+        arq.write(str(memoria))
+        arq.close()
