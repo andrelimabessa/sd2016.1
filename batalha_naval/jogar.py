@@ -32,6 +32,11 @@ class Jogar(object):
                 print(("Opção inválida: " + repr(self.opcao)))
                 print("\n")
                 self.set_opcao(False)
+            except MemoryError:
+                print(("Assim você lasca a memória chapa. Número de índice muito grande."))
+                print("\n")
+                input()
+                self.set_opcao(False)
 
     def get_opcao(self):
         return self.opcao

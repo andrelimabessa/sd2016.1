@@ -1,5 +1,6 @@
 import socket
 from datetime import datetime
+import menus
 
 ENCODE = "UTF-8"
 HOST = '127.0.0.1'  # Endereco IP do Servidor
@@ -13,11 +14,27 @@ def client():
         
         sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         dest = (HOST, PORT)
-        text = input("Digite algum comando:\n")
-        data = text.encode(ENCODE)
-        sock.sendto(data, dest)
+
+        text = menus.menu_inicial()
+        enviar_text(text, sock, dest)
+
+        #data = text.encode(ENCODE)
+        #sock.sendto(data, dest)
         #Resposta de envio ao servidor
-        print(sock.getsockname())
-        data, address = sock.recvfrom(MAX_BYTES)  # Danger! See Chapter 2
-        text = data.decode(ENCODE)
+        #print(sock.getsockname())
+        #data, address = sock.recvfrom(MAX_BYTES)  # Danger! See Chapter 2
+        #text = data.decode(ENCODE)
+        address, text = tratar_respota(sock)
         print(address, text)
+
+        #text = tratar_reposta(text)
+def enviar_text(text, sock, dest):
+    #sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    #dest = (HOST, PORT)
+    data = text.encode(ENCODE)
+    sock.sendto(data, dest)
+
+def tratar_respota(sock):
+    data, address = sock.recvfrom(MAX_BYTES)  # Danger! See Chapter 2
+    text = data.decode(ENCODE)
+    return (address, text)

@@ -16,8 +16,13 @@ def server():
         data, address = sock.recvfrom(MAX_BYTES)
         text = data.decode(ENCODE)
         print(address, text)
+        tratar_requisicao(text)
         #Envia resposta
         text = "Your data was " + str(len(data)) + " bytes long"
         data = text.encode(ENCODE)
         sock.sendto(data, address)
     sock.close()
+
+def tratar_requisicao(text):
+    if text == "1":
+        return input("Testando:")

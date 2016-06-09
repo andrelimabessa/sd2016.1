@@ -4,6 +4,7 @@ from jogo import Jogo
 import ast
 import sys
 import menus
+import os
 
 class Jogar(object):
 
@@ -12,8 +13,8 @@ class Jogar(object):
         self.ativo = False
 
         while self.opcao == False:
+            cls()
             self.set_opcao(menus.menu_inicial())
-            #self.opcao = menus.menu_inicial()
 
             try:
                 if isinstance(ast.literal_eval(self.opcao), int):
@@ -23,9 +24,19 @@ class Jogar(object):
                         self.set_opcao(continuar_jogo(self))
                     elif int(self.get_opcao()) == 3:
                         self.set_opcao(True)
+                    elif int(self.get_opcao()) > 3 or int(self.get_opcao()) < 1:
+                        print("Valor inválido.")
+                        print("\n")
+                        self.set_opcao(False)
             except ValueError:
                 print(("Opção inválida: " + repr(self.opcao)))
-                self.opcao = False
+                print("\n")
+                self.set_opcao(False)
+            except MemoryError:
+                print(("Assim você lasca a memória chapa. Número de índice muito grande."))
+                print("\n")
+                input()
+                self.set_opcao(False)
 
     def get_opcao(self):
         return self.opcao
@@ -55,12 +66,22 @@ def acoes(self, jogo):
         elif int(opcao) == 2:
             if jogo.get_jogadas_restantes() > 0:
                 deu_certo = False
-                while deu_certo == False:
-                    linha = input("Digite a linha: \n")
-                    coluna = input("Digite a colluna: \n")
+                try:
+                    while deu_certo == False:
+                        print("\n")
+                        linha = input("Digite a linha: \n")
+                        coluna = input("Digite a colluna: \n")
 
-                    deu_certo = jogo.realizar_jogada(linha, coluna)
+                        deu_certo = jogo.realizar_jogada(linha, coluna)
+                        print("\n")
+                except TypeError:
+                    print("Os navios ainda não foram distribuidos!!")
                     print("\n")
+                    self.set_ativo(True)
+                except IndexError:
+                    print("Esses valores são inválidos para o tamanho do tabuleiro!")
+                    print("\n")
+                    self.set_ativo(True)
             else:
                 print("Suas Jogadas esgotaram!!!")
                 print("\n")
@@ -81,14 +102,14 @@ def acoes(self, jogo):
             self.set_ativo(False)
             print("Saindo do Jogo!!!!")
             print("\n")
-
-        elif int(opcao) == 6:
-            print("\n")
-            print("Tabuleiro:")
-            jogo.tabuleiro.imprime_tabuleiro()
-            self.set_ativo(True)
-            print("\n")
-
+#
+#        elif int(opcao) == 6:
+#            print("\n")
+#            print("Tabuleiro:")
+#            jogo.tabuleiro.imprime_tabuleiro()
+#            self.set_ativo(True)
+#            print("\n")
+#
         else:
             print("Opção Inválida!!!\n\n")
 
@@ -121,6 +142,9 @@ def continuar_jogo(self):
         acoes(self, jogo)
 
     return False
+
+def cls():
+    os.system('cls' if os.name == 'nt' else 'clear')
 
 jogar = Jogar()
 jogar.inicio()
