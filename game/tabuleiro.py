@@ -17,7 +17,7 @@ class Tabuleiro(object):
             y = random.randint(0, int(tam) -1)
             self.matriz[x][y] = "ok"
 
-        arq = open("rafael.txt", "a")
+        arq = open("rafael.txt", "w")
         arq.write(str(self.matriz))
         arq.close()
 
