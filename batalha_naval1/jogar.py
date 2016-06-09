@@ -21,6 +21,8 @@ class Jogar(object):
                         self.set_opcao(novo_jogo(self))
                     elif int(self.get_opcao()) == 2:
                         self.set_opcao(continuar_jogo(self))
+                    elif int(self.get_opcao()) == 3:
+                        self.set_opcao(True)
             except ValueError:
                 print(("Opção inválida: " + repr(self.opcao)))
                 self.opcao = False
@@ -37,15 +39,7 @@ class Jogar(object):
     def set_ativo(self, value):
         self.ativo = value
 
-def novo_jogo(self):
-    self.set_ativo(True)
-
-    #Atribuição de múltiplos atributos através do retorno de uma tupla de valores na função que está sendo chamada.
-    nome_jogador, qtd_linhas, qtd_colunas = menus.menu_novo_jogo_abertura()
-
-    jogo = Jogo(nome_jogador, qtd_linhas, qtd_colunas)
-    jogo.informacoes_do_jogo()
-
+def acoes(self, jogo):
     while self.get_ativo():
         opcao = menus.menu_novo_jogo()
 
@@ -98,12 +92,35 @@ def novo_jogo(self):
         else:
             print("Opção Inválida!!!\n\n")
 
-    return self.get_ativo()
+def novo_jogo(self):
+    self.set_ativo(True)
+
+    #Atribuição de múltiplos atributos através do retorno de uma tupla de valores na função que está sendo chamada.
+    nome_jogador, qtd_linhas, qtd_colunas = menus.menu_novo_jogo_abertura()
+
+    jogo = Jogo(nome_jogador, qtd_linhas, qtd_colunas)
+    jogo.informacoes_do_jogo()
+
+    acoes(self, jogo)
+
+    return False
 
 def continuar_jogo(self):
     self.set_ativo(True)
+    jogo = Jogo()
 
-    arq = open("memoria.txt","r")
+    if jogo.verificar_se_tem_algo_salvo():
+        memoria = ast.literal_eval(jogo.ler_arquivo())
+
+        jogo = Jogo(memoria["jogador"], memoria["qtd_linhas"], memoria["qtd_colunas"], memoria["tabuleiro"])
+        jogo.atualizar_acertos(memoria["acertos"])
+        jogo.atualizar_jogadas_restantes(memoria["jogadas_restantes"])
+
+        jogo.informacoes_do_jogo()
+
+        acoes(self, jogo)
+
+    return False
 
 jogar = Jogar()
 jogar.inicio()

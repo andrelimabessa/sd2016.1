@@ -8,3 +8,6 @@ class Jogador(object):
 
     def get_nome_jogador(self):
         return self.nome_jogador
+
+    def set_nome_jogador(self, nome_jogador):
+        self.nome_jogador = nome_jogador

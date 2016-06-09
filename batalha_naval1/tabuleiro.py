@@ -3,10 +3,10 @@ import random
 
 class Tabuleiro(object):
 
-	def __init__(self, qtd_linhas, qtd_colunas):
+	def __init__(self, qtd_linhas, qtd_colunas, tabuleiro):
 		self.qtd_colunas = int(qtd_colunas)
 		self.qtd_linhas = int(qtd_linhas)
-		self.tabuleiro = [ [0 for coluna in range(self.qtd_colunas)] for linha in range(self.qtd_linhas) ]
+		self.tabuleiro = tabuleiro
 		print("Tabuleiro Criado com Sucesso!!!")
 		print("\n")
 
@@ -18,6 +18,15 @@ class Tabuleiro(object):
 
 	def get_tabuleiro(self):
 		return self.tabuleiro
+
+	def set_qtd_linhas(self, qtd_linhas):
+		self.qtd_linhas = qtd_linhas
+
+	def set_qtd_colunas(self, qtd_colunas):
+		self.qtd_colunas = qtd_colunas
+
+	def set_tabuleiro(self, tabuleiro):
+		self.tabuleiro = tabuleiro
 
 	def imprime_tabuleiro(self):
 		for linha in self.tabuleiro:

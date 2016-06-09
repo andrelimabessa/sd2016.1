@@ -1,1 +1,1 @@
-{'tabuleiro': [[0, 1, 0, 0, 0], [0, 0, 0, 1, 0], [0, 0, 0, 1, 0], [1, 0, 0, 0, 0], [0, 0, 1, 0, 0]], 'jogadas_restantes': 4, 'acertos': 0, 'jogador': 'Miguel'}
+{'qtd_linhas': 5, 'qtd_colunas': 5, 'jogadas_restantes': 4, 'tabuleiro': [[0, 0, 0, 1, 0], [0, 1, 0, 0, 0], [0, 0, 0, 1, 0], [0, 0, 1, 0, 0], [0, 0, 1, 0, 0]], 'acertos': 1, 'jogador': 'Christian'}

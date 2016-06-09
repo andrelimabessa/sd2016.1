@@ -5,12 +5,21 @@ from jogador import Jogador
 import ast
 
 class Jogo(object):
+    #estas variaveis e o teste do if no contrutor é para poder usar sobrecarga de contrutores
+    nome_jogador = ""
+    qtd_linhas = 0
+    qtd_colunas = 0
 
-    def __init__(self, nome_jogador, qtd_linhas, qtd_colunas):
-        self.jogador = Jogador(nome_jogador)
-        self.tabuleiro = Tabuleiro(int(qtd_linhas), int(qtd_colunas))
-        self.acertos = 0
-        self.jogadas_restantes = self.tabuleiro.get_qtd_linhas()
+    def __init__(self, nome_jogador = None, qtd_linhas = None, qtd_colunas = None, matriz = None):#TypeError
+        if (nome_jogador is not None) and (qtd_linhas is not None) and (qtd_colunas is not None):
+            if matriz is not None:
+                self.matriz = matriz
+            else:
+                self.matriz = [ [0 for coluna in range(int(qtd_colunas))] for linha in range(int(qtd_linhas)) ]
+            self.jogador = Jogador(nome_jogador)
+            self.tabuleiro = Tabuleiro(int(qtd_linhas), int(qtd_colunas), matriz)
+            self.acertos = 0
+            self.jogadas_restantes = self.tabuleiro.get_qtd_linhas()
 
     def set_acertos(self):
         self.acertos = self.acertos + 1
@@ -39,6 +48,12 @@ class Jogo(object):
     def get_tabuleiro(self):
         return self.tabuleiro.get_tabuleiro()
 
+    def set_nome_jogador(self, nome_jogador):
+        self.jogador = Jogador(nome_jogador)
+
+    def set_tabuleiro(self, qtd_linhas, qtd_colunas):
+        self.tabuleiro = Tabuleiro(qtd_linhas, qtd_colunas)
+
     def informacoes_do_jogo(self):
         print("\n")
         print("Nome do jogador: %s"%(self.get_nome_jogador()))
@@ -50,9 +65,15 @@ class Jogo(object):
         self.acertos = 0
         print("Quantidade de acertos ajustada para %i"%(self.get_acertos()))
 
+    def atualizar_acertos(self, value):
+        self.acertos = value
+
     def resetar_jogadas_restantes(self):
         self.jogadas_restantes = self.get_qtd_linhas()
         print("Jogadas restantes: %i"%(self.get_jogadas_restantes()))
+
+    def atualizar_jogadas_restantes(self, value):
+        self.jogadas_restantes = value
 
     def realizar_jogada(self, linha, coluna):
         tabuleiro = self.get_tabuleiro()
@@ -92,9 +113,26 @@ class Jogo(object):
     def salvar_jogo(self):
         memoria = {}
         memoria["jogador"] = self.get_nome_jogador()
+        memoria["qtd_linhas"] = self.get_qtd_linhas()
+        memoria["qtd_colunas"] = self.get_qtd_colunas()
         memoria["tabuleiro"] = self.get_tabuleiro()
         memoria["acertos"] = self.get_acertos()
         memoria["jogadas_restantes"] = self.get_jogadas_restantes()
         arq = open("memoria.txt","w")
         arq.write(str(memoria))
         arq.close()
+
+    def verificar_se_tem_algo_salvo(self):
+        arq = open("memoria.txt","r")
+        memoria = arq.readline()
+        arq.close()
+        if len(memoria) <= 0:
+            return False
+        else:
+            return True
+
+    def ler_arquivo(self):
+        arq = open("memoria.txt", "r")
+        memoria = arq.readline()
+        arq.close()
+        return memoria

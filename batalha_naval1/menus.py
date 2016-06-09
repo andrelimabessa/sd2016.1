@@ -5,6 +5,7 @@ def menu_inicial():
     print("Escolha a opção: ")
     print("1 - Novo Jogo.")
     print("2 - Continuar Jogo.")
+    print("3 - Me enganei, vou sair.")
 
     return input("Opção: \n")
 
