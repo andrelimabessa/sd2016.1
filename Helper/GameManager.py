@@ -7,23 +7,33 @@ class GameManager:
 	__player1 = None
 	__player2 = None
 	__turnPlayer = 1
+
+	action_player = "setPlayer"
+	action_play = "play"
+
 	def __init__(self):
 		self.__handleGame()
+	def turn(self, action, value):
+		if action == "setPlayer":
+			if self.__player1 is None:
+				self.__player1 = Player(value, self.__chances)
+			else:
+				self.__player2 = Player(value, self.__chances)
 
 	def __handleGame(self):
-		if self.__player1 is None or self.__player2 is None:
-			self.__getFirstPlayer()
-		else:
-			self.__playTurn()
-		self.__handleGame()
-
+		#if self.__player1 is None or self.__player2 is None:
+		#	self.__getFirstPlayer()
+		#else:
+		#	self.__playTurn()
+		#self.__handleGame()
+		print('jogando')
 	def __showGameTitle(self):
 		print('|||||||||||||||||||||');
 		print('!!!!BATALHA NAVAL!!!!');
 		print('|||||||||||||||||||||');
 	def __getFirstPlayer(self):
 		self.__showGameTitle()
-		if (self.__player1 is None): 
+		if (self.__player1 is None):
 			print("Qual o nome do jogador 1?")
 			playerName = input("")
 			self.__player1 = Player(playerName, self.__chances)
